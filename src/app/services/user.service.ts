@@ -10,7 +10,8 @@ import {UserDTO} from "../models/user";
   providedIn: 'root'
 })
 export class UserService {
-  private apiUrl = "http://localhost:8080";
+  //private apiUrl = "http://localhost:8080";
+  private apiUrl = "https://proba-spring.azurewebsites.net";
   constructor(private http: HttpClient) { }
 
   /**

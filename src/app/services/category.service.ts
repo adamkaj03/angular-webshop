@@ -12,7 +12,8 @@ import {error} from "@angular/compiler-cli/src/transformers/util";
   providedIn: 'root'
 })
 export class CategoryService {
-  private apiUrl = "http://localhost:8080";
+  //private apiUrl = "http://localhost:8080";
+  private apiUrl = "https://proba-spring.azurewebsites.net";
 
   readonly headers = new HttpHeaders({
     'Authorization': 'Bearer ' + this.storageService.getUserToken()

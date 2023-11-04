@@ -11,7 +11,8 @@ const SHIPPING_TYPE_STRING = 'shipping-type';
   providedIn: 'root'
 })
 export class ShippingTypeService {
-  private apiUrl = "http://localhost:8080";
+  //private apiUrl = "http://localhost:8080";
+  private apiUrl = "https://proba-spring.azurewebsites.net";
 
   constructor(private http: HttpClient) {
   }

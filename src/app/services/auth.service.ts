@@ -10,7 +10,8 @@ import {StorageService} from "./storage.service";
  */
 @Injectable({providedIn: 'root'})
 export class AuthService {
-  private apiUrl = "http://localhost:8080/api/auth";
+  //private apiUrl = "http://localhost:8080/api/auth";
+  private apiUrl = "https://proba-spring.azurewebsites.net/api/auth";
   constructor(private http: HttpClient, private storageService: StorageService) {}
 
   /**

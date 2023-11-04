@@ -14,7 +14,8 @@ import {ShippingType} from "../models/shippingType";
   providedIn: 'root'
 })
 export class OrderService {
-  private apiUrl = "http://localhost:8080";
+  //private apiUrl = "http://localhost:8080";
+  private apiUrl = "https://proba-spring.azurewebsites.net";
 
   readonly headers = new HttpHeaders({
     'Authorization': 'Bearer ' + this.storageService.getUserToken() // Cseréld le YOUR_AUTH_TOKEN-ra a valós tokennel

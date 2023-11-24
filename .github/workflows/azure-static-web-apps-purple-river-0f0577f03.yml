@@ -26,6 +26,10 @@ jobs:
           npm install --legacy-peer-deps # Add --legacy-peer-deps or --force flag to the npm install command
       - name: Set legacy-peer-deps
         run: sudo npm config set legacy-peer-deps true
+      - name: Create 'dist' directory
+        run: mkdir dist # Hozz létre egy 'dist' mappát, ha nem létezik
+      - name: Build the Angular app
+        run: npm run build --prod # Ez a parancs létrehozza majd feltölti a 'dist' mappát
       - name: Build And Deploy
         id: builddeploy
         uses: Azure/static-web-apps-deploy@v1

@@ -15,7 +15,7 @@ export class BookService {
   //private apiUrl = "http://localhost:8080";
   private apiUrl = "https://proba-spring.azurewebsites.net";
   readonly headers = new HttpHeaders({
-    'Authorization': 'Bearer ' + this.storageService.getUserToken() // Cseréld le YOUR_AUTH_TOKEN-ra a valós tokennel
+    'Authorization': 'Bearer ' + this.storageService.getUserToken()
   });
   constructor(private http: HttpClient, private storageService: StorageService) { }
 

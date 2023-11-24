@@ -89,7 +89,7 @@
                     <hr class="my-4">
 
                     <div class="d-flex justify-content-between mb-5">
-                      <h5>Teljes összeg: {{getFullPrice()}}</h5>
+                      <h5>Teljes összeg: {{getFullPrice() == null ? '-' : getFullPrice()}}</h5>
                     </div>
 
                     <button type="button" class="btn btn-dark btn-block btn-lg"

@@ -15,10 +15,7 @@
                 <div class="alert alert-danger" *ngIf="errorMessage">
                   <p>{{ errorMessage }}</p>
                 </div>
-                <div *ngIf="isLoading" style="text-align: center">
-                  <app-loading-spinner></app-loading-spinner>
-                </div>
-                <form #authForm="ngForm" (ngSubmit)="onSubmit(authForm)" *ngIf="!isLoading">
+                <form #authForm="ngForm" (ngSubmit)="onSubmit(authForm)">
                   <div *ngIf="!isLoginMode" class="form-group">
                     <input type="text" id="name" class="form-control" ngModel name="name" required minlength="1" placeholder="Teljes név"><br>
                   </div>

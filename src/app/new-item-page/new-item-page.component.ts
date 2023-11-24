@@ -68,7 +68,6 @@ export class NewItemPageComponent {
             id: 0,
             name: ""
           };
-          console.log(selectedCategory);  // Ellenőrzési célokra
           let book: BookRequest = {
             title: title,
             author: author,
@@ -77,7 +76,6 @@ export class NewItemPageComponent {
             category: selectedCategory,
             description: desc
           }
-          alert(selectedCategory.id)
           this.bookService.postBook(book, this.selectedFile).subscribe(
             (response) =>{
               this.successMessageBook = "Sikeresen felvettél egy új könyvet a rendszerbe!"

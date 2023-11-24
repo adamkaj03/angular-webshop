@@ -5,7 +5,6 @@ import {HttpClientModule} from "@angular/common/http";
 import { AppComponent } from './app.component';
 import {BookService} from "./services/book.service";
 import { BookListComponent } from './book-list/book-list.component';
-import { UserComponent } from './user/user.component';
 import {RouterModule, Routes} from "@angular/router";
 import { AuthComponent } from './auth/auth.component';
 import {FormsModule} from "@angular/forms";
@@ -15,9 +14,9 @@ import { BookPageComponent } from './book-page/book-page.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { OrderPageComponent } from './order-page/order-page.component';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import { ToastrModule } from 'ngx-toastr';
 import { CartPageComponent } from './cart-page/cart-page.component';
 import { EmptyCartComponent } from './empty-cart/empty-cart.component';
-import { CartPageItemComponent } from './cart-page-item/cart-page-item.component';
 import { ShippingDetailsComponent } from './shipping-details/shipping-details.component';
 import {AuthGuard} from "./services/authGurard";
 import {RoleGuard} from "./services/roleGuard";
@@ -26,7 +25,6 @@ import { NewItemPageComponent } from './new-item-page/new-item-page.component';
 
 const appRoutes: Routes = [
   {path: "", component: BookListComponent},
-  {path: "users", component: UserComponent},
   {path: "signin", component: AuthComponent},
   {path: "book/:title", component: BookPageComponent},
   {path: "orders", component: OrderPageComponent, canActivate: [RoleGuard], data: {
@@ -44,7 +42,6 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     BookListComponent,
-    UserComponent,
     AuthComponent,
     LoadingSpinnerComponent,
     LogoutComponent,
@@ -53,7 +50,6 @@ const appRoutes: Routes = [
     OrderPageComponent,
     CartPageComponent,
     EmptyCartComponent,
-    CartPageItemComponent,
     ShippingDetailsComponent,
     ForbiddenPageComponent,
     NewItemPageComponent
@@ -63,7 +59,11 @@ const appRoutes: Routes = [
     HttpClientModule,
     RouterModule.forRoot(appRoutes),
     FormsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    ToastrModule.forRoot({
+      timeOut: 3000,
+      positionClass: 'toast-bottom-center',
+    })
   ],
   providers: [BookService,
               RoleGuard],

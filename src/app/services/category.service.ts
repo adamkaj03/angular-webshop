@@ -28,9 +28,6 @@ export class CategoryService {
     return this.http.get<Category[]>(this.apiUrl+"/api/kategoriak");
   }
 
-  /*public getCategoryByName(categoryName: string): Category{
-    return this.http.get<Category>(this.apiUrl + "/api/kategoriak", {categoryName});
-  }*/
 
   public postCategory(category: string) {
     return this.http.post<Category>(this.apiUrl+"/api/kategoriak", '' + category + '', { headers: this.headers })

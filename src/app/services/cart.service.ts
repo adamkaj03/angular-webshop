@@ -23,12 +23,7 @@ export class CartService {
 
   constructor(private http: HttpClient, private storageService: StorageService) { }
 
-  /**
-   * lekéri az összes terméket a kosárból
-   */
-  /*public getCart(): Observable<Cart>{
-    return this.http.get<Cart>(this.apiUrl+"/api/kosar");
-  }*/
+
 
   public getCart(): Cart{
     let cartString = localStorage.getItem(CART_STRING)

@@ -6,6 +6,7 @@ import {StorageService} from "../services/storage.service";
 import {Observable} from "rxjs";
 import {Router} from "@angular/router";
 import {CartService} from "../services/cart.service";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-book-list',
@@ -21,7 +22,8 @@ export class BookListComponent implements OnInit{
     private bookService: BookService,
     private router: Router,
     private storageService: StorageService,
-    private cartService: CartService) {
+    private cartService: CartService,
+    private toastr: ToastrService) {
   }
 
 
@@ -59,6 +61,7 @@ export class BookListComponent implements OnInit{
   addToCart(book: Book) {
     this.isCartButtonWasClicked = true;
     this.cartService.addBookToCart(book, 1)
+    this.toastr.success("Sikeresen beleraktál egy könyvet a kosárba!")
   }
 
   changeCursorStyle(event: MouseEvent) {

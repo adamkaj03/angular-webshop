@@ -2,7 +2,6 @@
   <div class="container px-4 px-lg-5 mt-5">
     <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
       <div class="col mb-5" *ngFor="let book of (books | async)">
-        <!--<a [href]="shouldNavigateToBookPage(book) ? '/book/' + encodeURIComponent(book.title) : ''" (click)="navigateToBookPage(encodeURIComponent(book.title))">-->
         <a (click)="navigateToBookPage(encodeURIComponent(book.title))" (mouseover)="changeCursorStyle($event)" >
           <div class="card h-100 card-hover">
             <ng-container *ngIf="isBookImgUrlNotNull(book); else elseBlock">
@@ -19,10 +18,8 @@
                 <h4>{{ book.price }} Ft</h4>
               </div>
             </div>
-            <!-- Product actions-->
             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
               <div class="text-center"><button class="btn btn-outline-dark mt-auto" (click)="addToCart(book)" data-no-navigation>Kosárba</button></div>
-              <!--<div class="text-center"><a href="" class="btn btn-outline-dark mt-auto" (click)="addToCart(book)" data-no-navigation>Kosárba</a></div>-->
             </div>
           </div>
         </a>

@@ -4,6 +4,7 @@ import {BookService} from "../services/book.service";
 import {Observable} from "rxjs";
 import {Book} from "../models/book";
 import {CartService} from "../services/cart.service";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-book-page',
@@ -16,14 +17,15 @@ export class BookPageComponent {
   constructor(private route: ActivatedRoute,
               private bookService: BookService,
               private cartService: CartService,
-              private router: Router) {
+              private router: Router,
+              private toastr: ToastrService) {
   }
 
   ngOnInit() {
     let title = this.route.snapshot.params['title']
     this.bookService.getBook(decodeURIComponent(title)).subscribe(
       (data: Book) => {
-        this.book = data; // Az érték beállítása, amikor megérkezik
+        this.book = data;
       },
       (error) => {
         console.error('Hiba történt:', error);
@@ -38,5 +40,6 @@ export class BookPageComponent {
   addToCart(book: Book, quantity: any) {
     this.cartService.addBookToCart(book, quantity)
     this.router.navigateByUrl("")
+    this.toastr.success("Sikeresen beleraktál egy könyvet a kosárba!")
   }
 }

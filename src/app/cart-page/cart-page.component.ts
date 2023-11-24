@@ -6,6 +6,7 @@ import {Router} from "@angular/router";
 import {ShippingType} from "../models/shippingType";
 import {ShippingTypeService} from "../services/shippingType.service";
 import {Observable} from "rxjs";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-cart-page',
@@ -24,7 +25,10 @@ export class CartPageComponent implements OnInit{
     name: "",
     price: 0
   };
-  constructor(private cartService: CartService, private router: Router, private shippingTypeService: ShippingTypeService) {
+  constructor(private cartService: CartService,
+              private router: Router,
+              private shippingTypeService: ShippingTypeService,
+              private toastr: ToastrService) {
   }
 
   getCart(){
@@ -42,12 +46,11 @@ export class CartPageComponent implements OnInit{
     let defaultShippingType: ShippingType;
     this.shippingTypeService.getShippingTypeById(1).subscribe(
         (data) =>{
-          defaultShippingType = data;
-          this.shippingTypeService.putShippingTypeToLocalStorage(defaultShippingType);
+            defaultShippingType = data;
+            this.selectedShippingType = defaultShippingType
+            this.shippingTypeService.putShippingTypeToLocalStorage(defaultShippingType);
           }
         )
-
-
   }
 
   getCartQuantity(): number{
@@ -65,7 +68,10 @@ export class CartPageComponent implements OnInit{
     return false;
   }
 
-  getFullPrice(): number {
+  getFullPrice(): number|null {
+    if(this.selectedShippingType.id == 0){
+      return null
+    }
     return this.cart.amount + this.selectedShippingType.price;
   }
 

@@ -24,7 +24,6 @@ export class NavBarComponent {
   {
     this.storageServiceData = this.storageService.getData();
     this.categories = this.categoryService.getCategories();
-    console.log(this.categoryService.getCategories())
   }
 
 
@@ -47,6 +46,7 @@ export class NavBarComponent {
   }
 
   refreshWithCategory(id: number|null) {
+    this.storageService.cleanSeachWord()
     if(id !== null){
       this.storageService.saveCategory(id!);
     }
@@ -59,9 +59,6 @@ export class NavBarComponent {
   navigateToCart() {
     this.router.navigateByUrl("/cart");
   }
-
-
-
 
   onSubmit(searchForm: NgForm) {
     this.storageService.cleanCategory()

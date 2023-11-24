@@ -21,17 +21,6 @@ export class OrderPageComponent {
       this.orders = this.orderService.getOrders();
   }
 
-  /*private countOrderPrice(id: number): Observable<number> {
-    return this.orderService.getPrice(id).pipe(
-      map((data) => data)
-    );
-  }*/
-
-  /*public getOrderPrice(id: number): Observable<number> {
-    return this.countOrderPrice(id).pipe(
-      map(() => this.orderPrice)
-    );
-  }*/
   ngOnInit(): void {
     this.getOrders();
   }

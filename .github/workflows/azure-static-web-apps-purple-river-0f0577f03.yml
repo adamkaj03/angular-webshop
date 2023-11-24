@@ -19,8 +19,13 @@ jobs:
         with:
           submodules: true
           lfs: false
-      - name: Clear node_modules cache
-        run: npm cache clean --force
+      - name: Set legacy-peer-deps
+        run: sudo npm config set legacy-peer-deps true
+      - name: Clear node_modules and npm cache, then install dependencies
+        run: |
+          rm -rf node_modules
+          npm cache clean --force
+          npm install --force
       - name: Set legacy-peer-deps
         run: npm config set legacy-peer-deps true
       - name: Build And Deploy
